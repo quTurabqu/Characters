@@ -1,7 +1,11 @@
 package com.example.characters.model;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.widget.Button;
+
+import com.example.characters.util.CardManager;
 
 
 public class Card extends Button {
@@ -9,21 +13,16 @@ public class Card extends Button {
     private int customId;
     private int pairId;
     private int backImgId;
-    private boolean isOpen;
     private boolean found;
 
-    private Context myContext;
-
-    public Card(Context context, int customId, int pairId) {
+    public Card(Context context, int customId, int pairId, int imageId) {
         super(context);
         this.customId = customId;
         this.pairId = pairId;
-        this.backImgId = -1;
-        this.isOpen = false;
+        this.backImgId = imageId;
         this.setHeight(250);
-        this.myContext = context;
-        this.found = false;
         this.setBackgroundResource(android.R.drawable.btn_default);
+        this.found = false;
     }
 
     public int getPairId() {
@@ -42,20 +41,8 @@ public class Card extends Button {
         this.backImgId = backImgId;
     }
 
-    public boolean isOpen() {
-        return isOpen;
-    }
-
-    public void setOpen(boolean open) {
-        isOpen = open;
-    }
-
     public int getCustomId() {
         return customId;
-    }
-
-    public Context getMyContext(){
-        return myContext;
     }
 
     public boolean isFound() {
@@ -66,13 +53,24 @@ public class Card extends Button {
         this.found = found;
     }
 
+    // open the button
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    public void open(){
+        this.setBackground(getResources().getDrawable(CardManager.getDrawableId(this.backImgId)));
+    }
+
+    // close the button
+    public void close(){
+        this.setBackgroundResource(android.R.drawable.btn_default);
+    }
+
     @Override
     public String toString() {
         return "Card{" +
                 "customId=" + customId +
                 ", pairId=" + pairId +
                 ", backImgId=" + backImgId +
-                ", isOpen=" + isOpen +
+                ", found=" + found +
                 '}';
     }
 }
