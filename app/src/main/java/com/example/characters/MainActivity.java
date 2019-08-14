@@ -20,18 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        // key event
-//        input = findViewById(R.id.inputTxt);
-//        input.setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-//                output = findViewById(R.id.outputTxt);
-//                StringBuffer buffer = new StringBuffer(input.getText().toString());
-//                output.setText(buffer.reverse().toString());
-//                return false;
-//            }
-//        });
         inputTxt = findViewById(R.id.inputTxt);
         enterBtn = findViewById(R.id.enterBtn);
         enterBtn.setOnClickListener(new View.OnClickListener() {
