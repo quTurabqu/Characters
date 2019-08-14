@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">IMAGE MATCHING</string>
+    <string name="usernameHint">Enter username: </string>
+    <string name="startBtn">START GAME</string>
+    <string name="score">SCORE: </string>
+    <string name="welcome">You Are Welcome: </string>
+    <string name="refresh">REFRESH</string>
+    <string name="error">Please add username(*required): Min(2 chars)</string>
+</resources>

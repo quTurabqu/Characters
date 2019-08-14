@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IMAGE MATCHING</string>
+    <string name="refresh">YENILE</string>
+    <string name="score">"PUAN: "</string>
+    <string name="startBtn">OYUNA BAŞLA</string>
+    <string name="usernameHint">"İSTİFADƏÇİ İSMİNİZ: "</string>
+    <string name="welcome">"HOŞ BULDUK: "</string>
+    <string name="error">Minimum 2 karakter elave ediniz!</string>
+</resources>
