@@ -23,6 +23,7 @@ public class Card extends Button {
         this.setHeight(250);
         this.myContext = context;
         this.found = false;
+        this.setBackgroundResource(android.R.drawable.btn_default);
     }
 
     public int getPairId() {

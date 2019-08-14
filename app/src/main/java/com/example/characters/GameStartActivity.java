@@ -5,6 +5,7 @@ import androidx.gridlayout.widget.GridLayout;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -91,6 +92,10 @@ public class GameStartActivity extends AppCompatActivity {
             }
         }
 
+        final MediaPlayer mediaPlayerClick = MediaPlayer.create(this,R.raw.click);
+        final MediaPlayer mediaPlayerFound = MediaPlayer.create(this,R.raw.found);
+        final MediaPlayer mediaPlayerFinal = MediaPlayer.create(this,R.raw.end);
+
         for(int i = 0; i < 16; i++){
             final Card card = (Card) gridLayout.getChildAt(i);
             card.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +104,8 @@ public class GameStartActivity extends AppCompatActivity {
                     if(lastCardId == -1){
                         lastCardId = card.getCustomId();
                         Log.d(">>>LAST CARD ID:", "" + lastCardId);
+                        // make a sound
+                        mediaPlayerClick.start();
                     }
                     else{
                         if(card.getPairId() == lastCardId){
@@ -107,17 +114,22 @@ public class GameStartActivity extends AppCompatActivity {
                             card.setFound(true);
                             lastCard.setFound(true);
                             lastCardId = -1;
-
                             // set score
                             score += 62.5;
                             // set user score
                             user.setScore(score);
+                            // make a sound
+                            mediaPlayerFound.start();
                         }
                         else
                         {
                             final Handler handler = new Handler();
                             final Card lastCard = (Card)gridLayout.getChildAt(lastCardId);
                             lastCardId = card.getCustomId();
+
+                            // make a sound
+                            mediaPlayerClick.start();
+
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -151,6 +163,8 @@ public class GameStartActivity extends AppCompatActivity {
                     if(isWin()){
                         Intent intent = createIntent(GameScoreActivity.class);
                         intent.putExtra("user", user);
+                        // make a sound
+                        mediaPlayerFinal.start();
                         startActivity(intent);
                     }
                 }
